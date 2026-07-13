@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita Pizza",
+    "description": "Classic pizza with fresh tomatoes, mozzarella, and basil",
+    "price": 299,
+    "image": "https://via.placeholder.com/250x180?text=Margherita+Pizza"
+  },
+  {
+    "id": 2,
+    "name": "Chicken Biryani",
+    "description": "Aromatic basmati rice with tender chicken and spices",
+    "price": 349,
+    "image": "https://via.placeholder.com/250x180?text=Chicken+Biryani"
+  },
+  {
+    "id": 3,
+    "name": "Paneer Tikka",
+    "description": "Grilled cottage cheese with Indian spices",
+    "price": 249,
+    "image": "https://via.placeholder.com/250x180?text=Paneer+Tikka"
+  },
+  {
+    "id": 4,
+    "name": "Butter Chicken",
+    "description": "Tender chicken in a creamy tomato-based sauce",
+    "price": 329,
+    "image": "https://via.placeholder.com/250x180?text=Butter+Chicken"
+  },
+  {
+    "id": 5,
+    "name": "Cheeseburger",
+    "description": "Juicy beef patty with melted cheese and fresh toppings",
+    "price": 279,
+    "image": "https://via.placeholder.com/250x180?text=Cheeseburger"
+  },
+  {
+    "id": 6,
+    "name": "Garlic Bread",
+    "description": "Crispy bread with garlic, butter, and herbs",
+    "price": 149,
+    "image": "https://via.placeholder.com/250x180?text=Garlic+Bread"
+  }
+]
