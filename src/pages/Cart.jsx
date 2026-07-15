@@ -1,16 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import './Cart.css';
 
-function Cart() {
-  const [cartItems, setCartItems] = useState([]);
-
+function Cart({ cartItems, setCartItems }) {
   const handleIncreaseQuantity = useCallback((id) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
-  }, []);
+  }, [setCartItems]);
 
   const handleDecreaseQuantity = useCallback((id) => {
     setCartItems((prevItems) =>
@@ -22,11 +20,11 @@ function Cart() {
         )
         .filter((item) => item.quantity > 0)
     );
-  }, []);
+  }, [setCartItems]);
 
   const handleRemoveItem = useCallback((id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  }, []);
+  }, [setCartItems]);
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
