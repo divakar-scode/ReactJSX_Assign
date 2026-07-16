@@ -1,7 +1,10 @@
 import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 
 function Cart({ cartItems, setCartItems }) {
+  const navigate = useNavigate();
+
   const handleIncreaseQuantity = useCallback((id) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
@@ -26,6 +29,14 @@ function Cart({ cartItems, setCartItems }) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   }, [setCartItems]);
 
+  const handleAddItems = () => {
+    navigate('/menu');
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout');
+  };
+
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -33,7 +44,12 @@ function Cart({ cartItems, setCartItems }) {
     <div className="cart-container">
       <h1>Shopping Cart</h1>
       {cartItems.length === 0 ? (
-        <p className="empty-message">Your cart is empty. Start shopping now!</p>
+        <div className="empty-cart">
+          <p className="empty-message">Your cart is empty. Start shopping now!</p>
+          <button className="add-items-btn" onClick={handleAddItems}>
+            Add Items
+          </button>
+        </div>
       ) : (
         <>
           <div className="cart-items">
@@ -61,6 +77,14 @@ function Cart({ cartItems, setCartItems }) {
           <div className="cart-summary">
             <p>Total Items: <strong>{totalItems}</strong></p>
             <p>Total Amount: <strong>₹{totalAmount.toFixed(2)}</strong></p>
+            <div className="cart-actions">
+              <button className="add-items-btn" onClick={handleAddItems}>
+                + Add Items
+              </button>
+              <button className="checkout-btn" onClick={handleCheckout}>
+                Proceed to Checkout
+              </button>
+            </div>
           </div>
         </>
       )}
