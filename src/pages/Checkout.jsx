@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Checkout.css';
 
-function Checkout() {
+function Checkout({ cartItems = [] }) {
   const [formData, setFormData] = useState({
     customerName: '',
     mobileNumber: '',
@@ -41,6 +41,10 @@ function Checkout() {
     }
   };
 
+  // Calculate totals
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
   return (
     <div className="checkout-container">
       <h1>Checkout</h1>
@@ -49,62 +53,95 @@ function Checkout() {
           ✓ Order placed successfully! Your order will be delivered soon.
         </div>
       ) : (
-        <form className="checkout-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="customerName">Customer Name *</label>
-            <input
-              type="text"
-              id="customerName"
-              name="customerName"
-              value={formData.customerName}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <div className="checkout-wrapper">
+          <form className="checkout-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="customerName">Customer Name *</label>
+              <input
+                type="text"
+                id="customerName"
+                name="customerName"
+                value={formData.customerName}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="mobileNumber">Mobile Number *</label>
-            <input
-              type="tel"
-              id="mobileNumber"
-              name="mobileNumber"
-              value={formData.mobileNumber}
-              onChange={handleChange}
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label htmlFor="mobileNumber">Mobile Number *</label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                name="mobileNumber"
+                value={formData.mobileNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="deliveryAddress">Delivery Address *</label>
-            <textarea
-              id="deliveryAddress"
-              name="deliveryAddress"
-              value={formData.deliveryAddress}
-              onChange={handleChange}
-              rows="4"
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label htmlFor="deliveryAddress">Delivery Address *</label>
+              <textarea
+                id="deliveryAddress"
+                name="deliveryAddress"
+                value={formData.deliveryAddress}
+                onChange={handleChange}
+                rows="4"
+                required
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="paymentMethod">Payment Method</label>
-            <select
-              id="paymentMethod"
-              name="paymentMethod"
-              value={formData.paymentMethod}
-              onChange={handleChange}
-            >
-              <option value="card">Credit/Debit Card</option>
-              <option value="upi">UPI</option>
-              <option value="netbanking">Net Banking</option>
-              <option value="wallet">Digital Wallet</option>
-            </select>
-          </div>
+            <div className="form-group">
+              <label htmlFor="paymentMethod">Payment Method</label>
+              <select
+                id="paymentMethod"
+                name="paymentMethod"
+                value={formData.paymentMethod}
+                onChange={handleChange}
+              >
+                <option value="card">Credit/Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="netbanking">Net Banking</option>
+                <option value="wallet">Digital Wallet</option>
+              </select>
+            </div>
 
-          <button type="submit" className="submit-btn">
-            Place Order
-          </button>
-        </form>
+            <button type="submit" className="submit-btn">
+              Place Order
+            </button>
+          </form>
+
+          {/* Cart Summary Section */}
+          <div className="order-summary">
+            <h2>Order Summary</h2>
+            {cartItems.length === 0 ? (
+              <p className="empty-summary">Your cart is empty</p>
+            ) : (
+              <>
+                <div className="summary-items">
+                  {cartItems.map((item) => (
+                    <div key={item.id} className="summary-item">
+                      <span className="item-name">{item.name}</span>
+                      <span className="item-qty">x{item.quantity}</span>
+                      <span className="item-price">₹{(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="summary-divider"></div>
+                <div className="summary-totals">
+                  <div className="total-items">
+                    <span>Total Items:</span>
+                    <strong>{totalItems}</strong>
+                  </div>
+                  <div className="total-amount">
+                    <span>Total Amount:</span>
+                    <strong className="amount">₹{totalAmount.toFixed(2)}</strong>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
