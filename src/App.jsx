@@ -32,7 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu cart={cart} onAddToCart={handleAddToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cart} setCartItems={setCart} />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout cartItems={cart} />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
