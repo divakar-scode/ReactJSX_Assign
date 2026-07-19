@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 
-function Cart() {
-  const [cartItems, setCartItems] = useState([]);
+function Cart({ cartItems, setCartItems }) {
+  const navigate = useNavigate();
 
   const handleIncreaseQuantity = useCallback((id) => {
     setCartItems((prevItems) =>
@@ -10,7 +11,7 @@ function Cart() {
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
-  }, []);
+  }, [setCartItems]);
 
   const handleDecreaseQuantity = useCallback((id) => {
     setCartItems((prevItems) =>
@@ -22,11 +23,26 @@ function Cart() {
         )
         .filter((item) => item.quantity > 0)
     );
-  }, []);
+  }, [setCartItems]);
 
   const handleRemoveItem = useCallback((id) => {
+  const itemToRemove = cartItems.find((item) => item.id === id);
+    const confirmRemove = window.confirm(
+      `Are you sure you want to remove "${itemToRemove?.name}" from your cart?`
+    );
+
+if (confirmRemove) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  }, []);
+  }
+}, [cartItems, setCartItems]);
+
+  const handleAddItems = () => {
+    navigate('/menu');
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { cartItems } });
+  };
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -35,7 +51,12 @@ function Cart() {
     <div className="cart-container">
       <h1>Shopping Cart</h1>
       {cartItems.length === 0 ? (
-        <p className="empty-message">Your cart is empty. Start shopping now!</p>
+        <div className="empty-cart">
+          <p className="empty-message">Your cart is empty. Start shopping now!</p>
+          <button className="submit-btn" onClick={handleAddItems}>
+           Browse Menu to add Items
+          </button>
+        </div>
       ) : (
         <>
           <div className="cart-items">
@@ -63,6 +84,14 @@ function Cart() {
           <div className="cart-summary">
             <p>Total Items: <strong>{totalItems}</strong></p>
             <p>Total Amount: <strong>₹{totalAmount.toFixed(2)}</strong></p>
+            <div className="cart-actions">
+              <button className="submit-btn" onClick={handleAddItems}>
+                + Add Items
+              </button>
+              <button className="submit-btn" onClick={handleCheckout}>
+                Proceed to Checkout
+              </button>
+            </div>
           </div>
         </>
       )}

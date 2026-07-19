@@ -4,41 +4,41 @@
     "name": "Margherita Pizza",
     "description": "Classic pizza with fresh tomatoes, mozzarella, and basil",
     "price": 299,
-    "image": "https://via.placeholder.com/250x180?text=Margherita+Pizza"
+    "image": "https://safrescobaldistatic.blob.core.windows.net/media/2022/11/PIZZA-MARGHERITA.jpg"
   },
   {
     "id": 2,
     "name": "Chicken Biryani",
     "description": "Aromatic basmati rice with tender chicken and spices",
     "price": 349,
-    "image": "https://via.placeholder.com/250x180?text=Chicken+Biryani"
+    "image": "https://www.cubesnjuliennes.com/wp-content/uploads/2020/01/Chicken-Biryani.jpg"
   },
   {
     "id": 3,
     "name": "Paneer Tikka",
     "description": "Grilled cottage cheese with Indian spices",
     "price": 249,
-    "image": "https://via.placeholder.com/250x180?text=Paneer+Tikka"
+    "image": "https://as2.ftcdn.net/v2/jpg/09/03/49/13/1000_F_903491316_CIa8uBGC8Stb4Ctaygs5kr0SFVTt1xUn.jpg"
   },
   {
     "id": 4,
     "name": "Butter Chicken",
     "description": "Tender chicken in a creamy tomato-based sauce",
     "price": 329,
-    "image": "https://via.placeholder.com/250x180?text=Butter+Chicken"
+    "image": "https://static.vecteezy.com/system/resources/thumbnails/015/933/397/small_2x/tasty-butter-chicken-curry-or-murg-makhanwala-or-masala-dish-from-indian-cuisine-free-photo.jpg"
   },
   {
     "id": 5,
     "name": "Cheeseburger",
     "description": "Juicy beef patty with melted cheese and fresh toppings",
     "price": 279,
-    "image": "https://via.placeholder.com/250x180?text=Cheeseburger"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg"
   },
   {
     "id": 6,
     "name": "Garlic Bread",
     "description": "Crispy bread with garlic, butter, and herbs",
     "price": 149,
-    "image": "https://via.placeholder.com/250x180?text=Garlic+Bread"
+    "image": "https://urbanfarmie.com/wp-content/uploads/Sliced-Garlic-Bread-Web-21.jpg"
   }
 ]

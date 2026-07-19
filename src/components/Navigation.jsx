@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ cartCount = 0 }) {
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -17,7 +17,10 @@ function Navigation() {
             <Link to="/menu" className="nav-link">Browse Menu</Link>
           </li>
           <li className="nav-item">
-            <Link to="/cart" className="nav-link">Cart</Link>
+            <Link to="/cart" className="nav-link cart-link">
+              🛒 Cart
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </Link>
           </li>
           <li className="nav-item">
             <Link to="/checkout" className="nav-link">Checkout</Link>
