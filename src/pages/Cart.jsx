@@ -33,15 +33,23 @@ function Cart({ cartItems, setCartItems }) {
 
 if (confirmRemove) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+<<<<<<< HEAD
   }
 }, [cartItems, setCartItems]);
+=======
+  }, [setCartItems]);
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
 
   const handleAddItems = () => {
     navigate('/menu');
   };
 
   const handleCheckout = () => {
+<<<<<<< HEAD
     navigate('/checkout', { state: { cartItems } });
+=======
+    navigate('/checkout');
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
   };
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -53,8 +61,13 @@ if (confirmRemove) {
       {cartItems.length === 0 ? (
         <div className="empty-cart">
           <p className="empty-message">Your cart is empty. Start shopping now!</p>
+<<<<<<< HEAD
           <button className="submit-btn" onClick={handleAddItems}>
            Browse Menu to add Items
+=======
+          <button className="add-items-btn" onClick={handleAddItems}>
+            Add Items
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
           </button>
         </div>
       ) : (
@@ -85,10 +98,17 @@ if (confirmRemove) {
             <p>Total Items: <strong>{totalItems}</strong></p>
             <p>Total Amount: <strong>₹{totalAmount.toFixed(2)}</strong></p>
             <div className="cart-actions">
+<<<<<<< HEAD
               <button className="submit-btn" onClick={handleAddItems}>
                 + Add Items
               </button>
               <button className="submit-btn" onClick={handleCheckout}>
+=======
+              <button className="add-items-btn" onClick={handleAddItems}>
+                + Add Items
+              </button>
+              <button className="checkout-btn" onClick={handleCheckout}>
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
                 Proceed to Checkout
               </button>
             </div>

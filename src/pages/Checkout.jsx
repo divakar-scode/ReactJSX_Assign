@@ -55,6 +55,7 @@ function Checkout({ cartItems = [] }) {
       ) : (
         <div className="checkout-wrapper">
           <form className="checkout-form" onSubmit={handleSubmit}>
+<<<<<<< HEAD
             {/* Cart Summary Section */}
           <div className="order-summary">
             <h2>Order Summary</h2>
@@ -77,6 +78,8 @@ function Checkout({ cartItems = [] }) {
               </>
             )}
           </div>
+=======
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
             <div className="form-group">
               <label htmlFor="customerName">Customer Name *</label>
               <input
@@ -132,6 +135,40 @@ function Checkout({ cartItems = [] }) {
               Place Order
             </button>
           </form>
+<<<<<<< HEAD
+=======
+
+          {/* Cart Summary Section */}
+          <div className="order-summary">
+            <h2>Order Summary</h2>
+            {cartItems.length === 0 ? (
+              <p className="empty-summary">Your cart is empty</p>
+            ) : (
+              <>
+                <div className="summary-items">
+                  {cartItems.map((item) => (
+                    <div key={item.id} className="summary-item">
+                      <span className="item-name">{item.name}</span>
+                      <span className="item-qty">x{item.quantity}</span>
+                      <span className="item-price">₹{(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="summary-divider"></div>
+                <div className="summary-totals">
+                  <div className="total-items">
+                    <span>Total Items:</span>
+                    <strong>{totalItems}</strong>
+                  </div>
+                  <div className="total-amount">
+                    <span>Total Amount:</span>
+                    <strong className="amount">₹{totalAmount.toFixed(2)}</strong>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
         </div>
       )}
     </div>

@@ -10,7 +10,10 @@ import './App.css';
 
 function App() {
   const [cart, setCart] = useState([]);
+<<<<<<< HEAD
   const [cartItems, setCartItems] = useState([]);
+=======
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
 
   const handleAddToCart = (food) => {
     setCart((prevCart) => {
@@ -33,7 +36,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu cart={cart} onAddToCart={handleAddToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cart} setCartItems={setCart} />} />
+<<<<<<< HEAD
         <Route path="/checkout" element={<Checkout cartItems={cart} />} />        
+=======
+        <Route path="/checkout" element={<Checkout cartItems={cart} />} />
+>>>>>>> 221d2efec6db376a6fa03aa47cc77e9b72bd0b10
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
